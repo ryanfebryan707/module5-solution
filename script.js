@@ -1,47 +1,74 @@
 const menuData = {
-  lunch: {
-    name: 'Lunch',
+  appetizers: {
+    name: 'Appetizers',
     items: [
-      { name: 'Grilled Chicken Bowl', price: '$12.99', desc: 'Fresh bowl with grilled chicken, vegetables, and rice.' },
-      { name: 'Caesar Wrap', price: '$10.99', desc: 'Crispy wrap with romaine, chicken, and dressing.' },
-      { name: 'Pasta Primavera', price: '$11.99', desc: 'Seasonal pasta with fresh vegetables and herbs.' },
-      { name: 'Turkey Club', price: '$11.50', desc: 'Classic layered sandwich with bacon and tomato.' }
+      { name: 'Crispy Spring Rolls', price: '$8.99', desc: 'Golden rolls filled with vegetables and savory herbs.' },
+      { name: 'Edamame Dumplings', price: '$9.50', desc: 'Steamed dumplings with fresh beans and ginger aroma.' },
+      { name: 'Spicy Wonton Bites', price: '$10.99', desc: 'Crisp dumplings served with chili garlic sauce.' },
+      { name: 'Peking Duck Pancakes', price: '$14.99', desc: 'Tender duck with hoisin sauce and fresh scallions.' }
     ]
   },
-  dinner: {
-    name: 'Dinner',
+  soups: {
+    name: 'Soups & Broths',
     items: [
-      { name: 'Ribeye Steak', price: '$28.99', desc: 'Premium grilled steak with garlic butter and sides.' },
-      { name: 'Salmon Fillet', price: '$24.99', desc: 'Oven-baked salmon with lemon cream sauce.' },
-      { name: 'Chicken Marsala', price: '$19.99', desc: 'Tender chicken in rich wine reduction sauce.' },
-      { name: 'Lobster Tail', price: '$32.99', desc: 'Buttery lobster with fresh seasonal vegetables.' }
+      { name: 'Hot & Sour Soup', price: '$7.99', desc: 'Classic soup with tofu, mushrooms, and a balanced kick.' },
+      { name: 'Wonton Noodle Soup', price: '$11.50', desc: 'Comforting broth with delicate dumplings and noodles.' },
+      { name: 'Chicken Corn Soup', price: '$8.50', desc: 'Smooth and savory classic with sweet corn and chicken.' },
+      { name: 'Tom Yum Broth', price: '$12.99', desc: 'Aromatic soup with shrimp, herbs, and citrus spice.' }
     ]
   },
-  sushi: {
-    name: 'Sushi',
+  noodles: {
+    name: 'Noodles',
     items: [
-      { name: 'California Roll', price: '$8.99', desc: 'Crab, cucumber, and avocado in a crispy roll.' },
-      { name: 'Spicy Tuna Roll', price: '$9.99', desc: 'Premium tuna with spicy sauce and crunch.' },
-      { name: 'Philadelphia Roll', price: '$10.99', desc: 'Salmon and cream cheese in a soft wrap.' },
-      { name: 'Dragon Roll', price: '$12.99', desc: 'Shrimp tempura and avocado with umami glaze.' }
+      { name: 'Dan Dan Noodles', price: '$13.99', desc: 'Spicy sesame noodles with minced pork and scallions.' },
+      { name: 'Singapore Noodles', price: '$14.50', desc: 'Wok-tossed noodles with curry flavor and vegetables.' },
+      { name: 'Beef Chow Fun', price: '$16.99', desc: 'Silky flat noodles with beef, bean sprouts, and sauce.' },
+      { name: 'Vegetable Lo Mein', price: '$12.99', desc: 'Fresh noodles with crunchy vegetables and savory sauce.' }
+    ]
+  },
+  rice: {
+    name: 'Rice Dishes',
+    items: [
+      { name: 'Yangzhou Fried Rice', price: '$13.99', desc: 'Classic fried rice with vegetables, egg, and shrimp.' },
+      { name: 'Steamed Jasmine Rice', price: '$4.99', desc: 'Fragrant rice served warm and fluffy.' },
+      { name: 'Bamboo Chicken Rice', price: '$14.50', desc: 'Savory chicken and rice topped with mushroom sauce.' },
+      { name: 'Char Siu Rice Bowl', price: '$15.99', desc: 'Roasted pork over steamed rice with vegetables.' }
+    ]
+  },
+  meat: {
+    name: 'Meat Specialties',
+    items: [
+      { name: 'Beef Kung Pao', price: '$18.99', desc: 'Tender beef with peanuts, peppers, and chili.' },
+      { name: 'Sweet & Sour Pork', price: '$16.50', desc: 'Crisp pork with pineapple and vibrant sauce.' },
+      { name: 'Mongolian Chicken', price: '$15.99', desc: 'Tender chicken with scallions in savory black bean sauce.' },
+      { name: 'Peking Duck', price: '$24.99', desc: 'Roasted duck served with pancakes and hoisin glaze.' }
+    ]
+  },
+  seafood: {
+    name: 'Seafood',
+    items: [
+      { name: 'Garlic Shrimp', price: '$17.99', desc: 'Juicy shrimp stir-fried with roasted garlic and vegetables.' },
+      { name: 'Cantonese Fish Fillet', price: '$20.99', desc: 'Delicate fish with ginger, scallion, and light sauce.' },
+      { name: 'Salt & Pepper Squid', price: '$16.99', desc: 'Crispy squid with aromatic seasoning and chili.' },
+      { name: 'Lobster in Ginger Sauce', price: '$27.99', desc: 'Premium lobster served with rich ginger and scallion sauce.' }
+    ]
+  },
+  vegetables: {
+    name: 'Vegetables',
+    items: [
+      { name: 'Bok Choy in Garlic Sauce', price: '$11.99', desc: 'Fresh greens pan-seared with aromatic garlic.' },
+      { name: 'Mapo Tofu', price: '$12.50', desc: 'Silky tofu in a savory, peppery sauce.' },
+      { name: 'Crispy Green Beans', price: '$11.25', desc: 'Quick-fried beans with chili and garlic.' },
+      { name: 'Broccoli in Oyster Sauce', price: '$12.99', desc: 'Tender broccoli served with savory oyster-flavored glaze.' }
     ]
   },
   dessert: {
-    name: 'Dessert',
+    name: 'Desserts',
     items: [
-      { name: 'Tiramisu', price: '$7.99', desc: 'Classic layered dessert with mascarpone cream.' },
-      { name: 'Chocolate Lava Cake', price: '$8.99', desc: 'Warm chocolate cake with molten center.' },
-      { name: 'Cheesecake', price: '$6.99', desc: 'Creamy cheesecake topped with berry compote.' },
-      { name: 'Crème Brûlée', price: '$7.50', desc: 'Vanilla custard with caramelized sugar crust.' }
-    ]
-  },
-  drinks: {
-    name: 'Drinks',
-    items: [
-      { name: 'Fresh Lemonade', price: '$3.99', desc: 'Perfectly chilled with fresh lemons.' },
-      { name: 'Iced Coffee', price: '$4.50', desc: 'Cold brew served over ice and smooth.' },
-      { name: 'Smoothie Bowl', price: '$7.99', desc: 'Seasonal fruit blend with crunchy toppings.' },
-      { name: 'Fresh Juice', price: '$5.99', desc: 'Orange, apple, or carrot juice blend.' }
+      { name: 'Mango Sago', price: '$7.99', desc: 'Refreshing dessert with mango, coconut, and tapioca pearls.' },
+      { name: 'Sesame Balls', price: '$6.50', desc: 'Warm, chewy treats with toasted sesame and sweet filling.' },
+      { name: 'Lychee Pancake', price: '$8.99', desc: 'Soft pastry with lychee cream and delicate sweetness.' },
+      { name: 'Mochi Ice Cream', price: '$7.50', desc: 'Chewy rice cake with rich vanilla and fruit centers.' }
     ]
   }
 };
