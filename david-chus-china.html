@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="David Chus China - Authentic Chinese Restaurant with Interactive Menu, Random Specials, and 3D Experience." />
+  <title>David Chus China - Authentic Chinese Restaurant</title>
+  <link rel="stylesheet" href="david-chus-style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="brand" aria-label="David Chus China home">
+        <span class="brand-mark">🏮</span>
+        <span class="brand-text">David Chus China</span>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home" class="active">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">🇨🇳 Authentic Chinese Cuisine</p>
+          <h1>Experience the<br><span>taste of China</span></h1>
+          <p class="lead">
+            Discover the finest authentic Chinese dishes at David Chus China. From traditional Peking Duck to 
+            Szechuan specialties, our menu celebrates centuries of culinary excellence with modern presentation 
+            and interactive dining experience.
+          </p>
+
+          <div class="hero-actions">
+            <button class="primary-btn" onclick="scrollToSection('menu')">Explore Menu</button>
+            <button class="ghost-btn" onclick="scrollToSection('about')">Learn More</button>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orb-ring ring-one"></div>
+          <div class="orb-ring ring-two"></div>
+          <div class="orb-ring ring-three"></div>
+
+          <div class="floating-tag tag-a">🥢 Premium</div>
+          <div class="floating-tag tag-b">🌶️ Authentic</div>
+
+          <div class="cube-scene">
+            <div class="cube">
+              <div class="face front">🍜</div>
+              <div class="face back">🥟</div>
+              <div class="face right">🦆</div>
+              <div class="face left">🍱</div>
+              <div class="face top">🏮</div>
+              <div class="face bottom">🍲</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow dark">Our Collection</p>
+          <h2>Explore David Chus China</h2>
+        </div>
+
+        <div class="tiles-grid">
+          <article class="tile-card menu-tile" onclick="showMenuPage()">
+            <div class="tile-icon">📋</div>
+            <h3>Full Menu</h3>
+            <p>Browse our complete selection of authentic Chinese dishes from appetizers to desserts.</p>
+            <span class="tile-link">View Menu →</span>
+          </article>
+
+          <article class="tile-card special-tile" onclick="showSpecialPage()">
+            <div class="tile-icon">⭐</div>
+            <h3>Chef's Special</h3>
+            <p id="special-summary">Discover our special dish selection for today.</p>
+            <span class="tile-link">Today's Special →</span>
+          </article>
+
+          <article class="tile-card map-tile" onclick="showMapPage()">
+            <div class="tile-icon">📍</div>
+            <h3>Location & Hours</h3>
+            <p>Find us in the heart of the city with convenient hours and exclusive dining experiences.</p>
+            <span class="tile-link">Visit Us →</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu-page" class="content-page hidden">
+      <div class="container">
+        <button class="back-btn" onclick="showHomePage()">← Back to Home</button>
+        <h2 class="page-title">David Chus China - Full Menu</h2>
+
+        <div class="filter-box">
+          <label for="category-filter">Filter by category:</label>
+          <select id="category-filter" onchange="filterMenu(this.value)">
+            <option value="all">All Dishes</option>
+            <option value="appetizers">Appetizers</option>
+            <option value="soups">Soups & Broths</option>
+            <option value="noodles">Noodles</option>
+            <option value="rice">Rice Dishes</option>
+            <option value="meat">Meat Specialties</option>
+            <option value="seafood">Seafood</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="dessert">Desserts</option>
+          </select>
+        </div>
+
+        <div id="menu-grid" class="menu-grid"></div>
+      </div>
+    </section>
+
+    <section id="special-page" class="content-page hidden">
+      <div class="container">
+        <button class="back-btn" onclick="showHomePage()">← Back to Home</button>
+        <h2 class="page-title">Chef's Special: <span id="special-name">Loading...</span></h2>
+
+        <div class="special-banner">
+          <p>🎯 This week's featured category, handpicked by Chef David.</p>
+          <button class="primary-btn small" onclick="showSpecialPage()">Show Different Special</button>
+        </div>
+
+        <div id="special-grid" class="menu-grid"></div>
+      </div>
+    </section>
+
+    <section id="map-page" class="content-page hidden">
+      <div class="container">
+        <button class="back-btn" onclick="showHomePage()">← Back to Home</button>
+        <h2 class="page-title">David Chus China - Visit Us</h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>📍 Location</h3>
+            <p><strong>Address:</strong> 888 Golden Dragon Street, Chinatown</p>
+            <p><strong>Phone:</strong> +1 (555) 888-CHUS</p>
+            <p><strong>Email:</strong> hello@davidchusschina.com</p>
+          </div>
+
+          <div class="info-card">
+            <h3>🕐 Hours of Operation</h3>
+            <p><strong>Mon-Thu:</strong> 11:00 AM - 10:00 PM</p>
+            <p><strong>Fri-Sat:</strong> 11:00 AM - 12:00 AM</p>
+            <p><strong>Sunday:</strong> 12:00 PM - 10:00 PM</p>
+          </div>
+
+          <div class="info-card">
+            <h3>✨ Ambiance</h3>
+            <p>Traditional Chinese décor with modern comfort. Private dining rooms for special occasions.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>🎁 Services</h3>
+            <p>Catering, family-style dining, reservation recommended, takeout available.</p>
+          </div>
+        </div>
+
+        <div class="map-placeholder">🗺️ Visit David Chus China - Located in Downtown Chinatown</div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow dark">Our Story</p>
+          <h2>About David Chus China</h2>
+        </div>
+
+        <p class="about-text">
+          Founded by Chef David Chus in 1998, our restaurant celebrates authentic Chinese cuisine with a modern twist. 
+          Each dish is prepared with premium ingredients and traditional techniques passed down through generations. 
+          Our commitment to excellence and customer satisfaction has made David Chus China a beloved destination for 
+          authentic Chinese dining in the city.
+        </p>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>🏆 Award-Winning</h3>
+            <p>Recognized for authentic recipes and exceptional service by culinary experts.</p>
+          </div>
+          <div class="feature-card">
+            <h3>⭐ Chef's Selection</h3>
+            <p>Discover daily specials chosen by Chef David from our finest ingredients.</p>
+          </div>
+          <div class="feature-card">
+            <h3>🌶️ Authentic Flavors</h3>
+            <p>Traditional recipes from multiple regions of China, carefully preserved and perfected.</p>
+          </div>
+          <div class="feature-card">
+            <h3>🎊 Premium Experience</h3>
+            <p>Elegant ambiance and interactive dining with 3D visual presentation of our cuisine.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2024 David Chus China — Authentic Chinese Restaurant | Crafted with 🏮 by Chef David</p>
+    </div>
+  </footer>
+
+  <script src="david-chus-script.js"></script>
+</body>
+</html>
