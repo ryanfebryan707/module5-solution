@@ -3,78 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Module 5 Solution - Interactive Restaurant Menu with Random Special Category">
     <title>Module 5 Solution</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">M5</div>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-active">Home</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
+    <!-- HEADER/NAVIGATION -->
+    <header class="header-fixed">
+        <div class="header-container">
+            <div class="logo">Module 5</div>
+            <nav class="navbar">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#menu" class="nav-link">Menu</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </header>
 
     <main>
         <!-- HOME SECTION -->
         <section id="home" class="hero-section">
-            <div class="hero-container">
-                <div class="hero-text">
-                    <h1>Welcome to<br><span class="highlight">Module 5 Solution</span></h1>
-                    <p>Experience a dynamic restaurant menu with random category selection</p>
-                    <button class="cta-button" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Get Started</button>
+            <div class="hero-background">
+                <div class="hero-content">
+                    <h1 class="hero-title">Discover Your<br><span class="highlight">Perfect Menu</span></h1>
+                    <p class="hero-subtitle">Experience a unique restaurant menu with dynamic category selection. Click "Special" to get a random category every time!</p>
+                    <button class="hero-btn" onclick="scrollToMenu()">Explore Now</button>
                 </div>
                 <div class="hero-visual">
-                    <div class="rotating-sphere">
-                        <div class="sphere-inner"></div>
+                    <div class="rotating-cube">
+                        <div class="cube-face front">5</div>
+                        <div class="cube-face back">M</div>
+                        <div class="cube-face right">O</div>
+                        <div class="cube-face left">D</div>
+                        <div class="cube-face top">U</div>
+                        <div class="cube-face bottom">L</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MENU SECTION (TILES) -->
-        <section id="menu" class="menu-section">
-            <h2>Choose Your Experience</h2>
-            <div class="tiles-grid">
-                <!-- TILE 1: MENU -->
-                <div class="tile" onclick="navigateToMenu()">
-                    <div class="tile-icon">📋</div>
-                    <h3>Menu</h3>
-                    <p>Browse all delicious categories and items</p>
-                    <button class="tile-btn">Explore →</button>
-                </div>
+        <!-- MENU TILES SECTION -->
+        <section id="menu" class="tiles-section">
+            <div class="section-container">
+                <h2 class="section-title">Choose Your Experience</h2>
+                <div class="tiles-wrapper">
+                    <!-- TILE 1: MENU -->
+                    <div class="tile-card" onclick="showMenuPage()">
+                        <div class="tile-icon">📋</div>
+                        <h3 class="tile-title">Menu</h3>
+                        <p class="tile-desc">Browse all categories and find your favorite dishes</p>
+                        <span class="tile-arrow">→</span>
+                    </div>
 
-                <!-- TILE 2: SPECIAL (Random) -->
-                <div class="tile" onclick="navigateToSpecial()">
-                    <div class="tile-icon">⭐</div>
-                    <h3>Special</h3>
-                    <p id="special-info">Click for a random category</p>
-                    <button class="tile-btn" id="special-btn">Random →</button>
-                </div>
+                    <!-- TILE 2: SPECIAL (Random Category) -->
+                    <div class="tile-card special-tile" onclick="showSpecialPage()">
+                        <div class="tile-icon">⭐</div>
+                        <h3 class="tile-title">Special</h3>
+                        <p class="tile-desc" id="special-desc">Click to reveal today's random special</p>
+                        <span class="tile-arrow">→</span>
+                    </div>
 
-                <!-- TILE 3: MAP -->
-                <div class="tile" onclick="navigateToMap()">
-                    <div class="tile-icon">🗺️</div>
-                    <h3>Map</h3>
-                    <p>Visit our restaurant location</p>
-                    <button class="tile-btn">View →</button>
+                    <!-- TILE 3: MAP -->
+                    <div class="tile-card" onclick="showMapPage()">
+                        <div class="tile-icon">🗺️</div>
+                        <h3 class="tile-title">Map</h3>
+                        <p class="tile-desc">Visit our restaurant location and learn more</p>
+                        <span class="tile-arrow">→</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- MENU LIST PAGE -->
-        <section id="menu-page" class="page-hidden">
-            <div class="page-container">
+        <!-- MENU PAGE -->
+        <section id="menu-page" class="content-page hidden">
+            <div class="page-header">
                 <button class="back-btn" onclick="backToHome()">← Back to Home</button>
                 <h2>Full Menu</h2>
-                
-                <div class="filter-group">
-                    <label for="category-select">Filter by Category:</label>
-                    <select id="category-select" onchange="filterMenu(this.value)">
-                        <option value="all">All</option>
+            </div>
+            <div class="section-container">
+                <div class="filter-container">
+                    <label for="category-filter">Select Category:</label>
+                    <select id="category-filter" onchange="filterMenu(this.value)" class="filter-select">
+                        <option value="all">All Categories</option>
                         <option value="lunch">Lunch</option>
                         <option value="dinner">Dinner</option>
                         <option value="sushi">Sushi</option>
@@ -82,80 +97,102 @@
                         <option value="drinks">Drinks</option>
                     </select>
                 </div>
-
-                <div id="menu-items-grid" class="items-grid">
-                    <!-- Items populated by JS -->
+                <div id="menu-grid" class="menu-grid">
+                    <!-- Menu items populated by JS -->
                 </div>
             </div>
         </section>
 
-        <!-- SPECIAL CATEGORY PAGE -->
-        <section id="special-page" class="page-hidden">
-            <div class="page-container">
+        <!-- SPECIAL PAGE -->
+        <section id="special-page" class="content-page hidden">
+            <div class="page-header">
                 <button class="back-btn" onclick="backToHome()">← Back to Home</button>
                 <h2>Today's Special: <span id="special-category-name">Loading...</span></h2>
-                
-                <div class="special-header">
-                    <p>This random category is your special selection for today!</p>
-                    <button class="refresh-btn" onclick="navigateToSpecial()">Get Another Random →</button>
+            </div>
+            <div class="section-container">
+                <div class="special-banner">
+                    <p>🎉 This random category is your special selection for today!</p>
+                    <button class="refresh-special-btn" onclick="showSpecialPage()">Get Another Random Special →</button>
                 </div>
-
-                <div id="special-items-grid" class="items-grid">
+                <div id="special-grid" class="menu-grid">
                     <!-- Special items populated by JS -->
                 </div>
             </div>
         </section>
 
         <!-- MAP PAGE -->
-        <section id="map-page" class="page-hidden">
-            <div class="page-container">
+        <section id="map-page" class="content-page hidden">
+            <div class="page-header">
                 <button class="back-btn" onclick="backToHome()">← Back to Home</button>
-                <h2>Visit Us</h2>
-                
-                <div class="map-content">
-                    <div class="map-info">
-                        <h3>Restaurant Location</h3>
-                        <p><strong>Address:</strong> 123 Gourmet Street, Food City</p>
+                <h2>Visit Our Restaurant</h2>
+            </div>
+            <div class="section-container">
+                <div class="map-grid">
+                    <div class="map-card">
+                        <h3>📍 Location</h3>
+                        <p><strong>Address:</strong><br>123 Gourmet Avenue, Food City, FC 12345</p>
                         <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-                        <p><strong>Hours:</strong> 11:00 AM - 11:00 PM (Daily)</p>
-                        <p><strong>Email:</strong> hello@restaurant.com</p>
+                        <p><strong>Email:</strong> hello@module5restaurant.com</p>
                     </div>
-                    <div class="map-placeholder">
-                        <p>🗺️ Interactive Map Coming Soon</p>
+                    <div class="map-card">
+                        <h3>🕐 Hours</h3>
+                        <p><strong>Monday - Friday:</strong> 11:00 AM - 11:00 PM</p>
+                        <p><strong>Saturday - Sunday:</strong> 10:00 AM - 12:00 AM</p>
+                        <p><strong>Closed:</strong> New Year's Day, Christmas</p>
                     </div>
+                    <div class="map-card">
+                        <h3>🚗 Parking</h3>
+                        <p>Free parking available in our lot. Street parking also available nearby.</p>
+                    </div>
+                    <div class="map-card">
+                        <h3>✨ Amenities</h3>
+                        <p>WiFi • Outdoor Seating • Private Dining • Catering Available</p>
+                    </div>
+                </div>
+                <div class="map-placeholder">
+                    <p>🗺️ Interactive Map Coming Soon</p>
                 </div>
             </div>
         </section>
 
         <!-- ABOUT SECTION -->
         <section id="about" class="about-section">
-            <div class="about-container">
-                <h2>About Module 5</h2>
-                <p>This is a restaurant web application that demonstrates dynamic menu management. The "Special" feature selects a random menu category each time you click it, making every visit unique and exciting.</p>
-                <div class="features-list">
-                    <div class="feature">
-                        <h4>✓ Dynamic Menu</h4>
-                        <p>Browse through multiple categories</p>
+            <div class="section-container">
+                <h2 class="section-title">About Module 5 Solution</h2>
+                <p class="about-text">This is an interactive restaurant menu application designed to demonstrate dynamic content management and user engagement. The unique "Special" feature randomly selects a menu category each time, ensuring every visit brings a new and exciting discovery.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <h3>✓ Dynamic Menu</h3>
+                        <p>Browse through multiple food categories with detailed descriptions and prices</p>
                     </div>
-                    <div class="feature">
-                        <h4>✓ Random Special</h4>
-                        <p>Get a surprise category every time</p>
+                    <div class="feature-box">
+                        <h3>✓ Random Special</h3>
+                        <p>Get a surprise category every time you click the Special button</p>
                     </div>
-                    <div class="feature">
-                        <h4>✓ 3D Effects</h4>
-                        <p>Interactive visual design</p>
+                    <div class="feature-box">
+                        <h3>✓ 3D Animation</h3>
+                        <p>Interactive 3D cube animation on the hero section</p>
                     </div>
-                    <div class="feature">
-                        <h4>✓ Responsive</h4>
-                        <p>Works on all devices</p>
+                    <div class="feature-box">
+                        <h3>✓ Responsive Design</h3>
+                        <p>Perfect experience on mobile, tablet, and desktop devices</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>✓ Smooth Navigation</h3>
+                        <p>Seamless transitions between pages and sections</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>✓ Modern UI</h3>
+                        <p>Clean, professional design with engaging animations</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Module 5 Solution. All rights reserved.</p>
+    <footer class="footer">
+        <p>&copy; 2024 Module 5 Solution. All rights reserved. | Created by Ryan</p>
     </footer>
 
     <script src="script.js"></script>
