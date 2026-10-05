@@ -1,208 +1,176 @@
-// Menu database
 const menuData = {
-    lunch: {
-        name: 'Lunch',
-        items: [
-            { name: 'Grilled Chicken Bowl', price: '$12.99', desc: 'Marinated chicken with fresh seasonal vegetables and rice' },
-            { name: 'Caesar Wrap', price: '$10.99', desc: 'Crispy wrap with romaine lettuce and our special dressing' },
-            { name: 'Pasta Primavera', price: '$11.99', desc: 'Fresh pasta with seasonal garden vegetables' },
-            { name: 'Turkey Club', price: '$11.50', desc: 'Classic three-layer sandwich with bacon and tomato' },
-            { name: 'Salmon Salad', price: '$13.99', desc: 'Grilled salmon over mixed greens with lemon vinaigrette' },
-            { name: 'Veggie Burger', price: '$9.99', desc: 'Plant-based burger with all the fixings' }
-        ]
-    },
-    dinner: {
-        name: 'Dinner',
-        items: [
-            { name: 'Ribeye Steak', price: '$28.99', desc: 'Premium 12oz cut with garlic butter and side vegetables' },
-            { name: 'Salmon Fillet', price: '$24.99', desc: 'Wild-caught salmon with lemon cream sauce' },
-            { name: 'Chicken Marsala', price: '$19.99', desc: 'Tender chicken in rich wine reduction with mushrooms' },
-            { name: 'Lobster Tail', price: '$32.99', desc: 'Butter-poached lobster tail with asparagus' },
-            { name: 'Duck Breast', price: '$26.99', desc: 'Pan-seared duck with cherry gastrique' },
-            { name: 'Lamb Chops', price: '$29.99', desc: 'Herb-crusted lamb chops with rosemary jus' }
-        ]
-    },
-    sushi: {
-        name: 'Sushi',
-        items: [
-            { name: 'California Roll', price: '$8.99', desc: 'Crab, avocado, and cucumber in perfect balance' },
-            { name: 'Spicy Tuna Roll', price: '$9.99', desc: 'Premium tuna with sriracha mayo kick' },
-            { name: 'Philadelphia Roll', price: '$10.99', desc: 'Salmon and cream cheese in a delicate wrap' },
-            { name: 'Dragon Roll', price: '$12.99', desc: 'Shrimp tempura with avocado and teriyaki glaze' },
-            { name: 'Volcano Roll', price: '$11.99', desc: 'Spicy toppings that create a flavor explosion' },
-            { name: 'Rainbow Roll', price: '$13.99', desc: 'Assorted fresh fish over California roll base' }
-        ]
-    },
-    dessert: {
-        name: 'Dessert',
-        items: [
-            { name: 'Tiramisu', price: '$7.99', desc: 'Classic Italian layered cake with coffee notes' },
-            { name: 'Chocolate Lava Cake', price: '$8.99', desc: 'Warm cake with molten chocolate center' },
-            { name: 'New York Cheesecake', price: '$6.99', desc: 'Creamy cheesecake with berry topping' },
-            { name: 'Crème Brûlée', price: '$7.50', desc: 'Vanilla custard with caramelized sugar crust' },
-            { name: 'Strawberry Shortcake', price: '$7.99', desc: 'Fluffy cake with fresh strawberries and cream' },
-            { name: 'Chocolate Mousse', price: '$6.99', desc: 'Decadent dark chocolate mousse with whipped cream' }
-        ]
-    },
-    drinks: {
-        name: 'Drinks',
-        items: [
-            { name: 'Fresh Lemonade', price: '$3.99', desc: 'Made fresh daily with real lemons' },
-            { name: 'Iced Coffee', price: '$4.50', desc: 'Premium cold brew coffee served over ice' },
-            { name: 'Smoothie Bowl', price: '$7.99', desc: 'Seasonal fruit smoothie with granola topping' },
-            { name: 'Fresh Juice', price: '$5.99', desc: 'Choose from orange, apple, or carrot' },
-            { name: 'Iced Tea', price: '$3.50', desc: 'Refreshing sweet or unsweet iced tea' },
-            { name: 'Specialty Cocktail', price: '$9.99', desc: 'Chef\'s special creation of the season' }
-        ]
-    }
+  lunch: {
+    name: 'Lunch',
+    items: [
+      { name: 'Grilled Chicken Bowl', price: '$12.99', desc: 'Fresh bowl with grilled chicken, vegetables, and rice.' },
+      { name: 'Caesar Wrap', price: '$10.99', desc: 'Crispy wrap with romaine, chicken, and dressing.' },
+      { name: 'Pasta Primavera', price: '$11.99', desc: 'Seasonal pasta with fresh vegetables and herbs.' },
+      { name: 'Turkey Club', price: '$11.50', desc: 'Classic layered sandwich with bacon and tomato.' }
+    ]
+  },
+  dinner: {
+    name: 'Dinner',
+    items: [
+      { name: 'Ribeye Steak', price: '$28.99', desc: 'Premium grilled steak with garlic butter and sides.' },
+      { name: 'Salmon Fillet', price: '$24.99', desc: 'Oven-baked salmon with lemon cream sauce.' },
+      { name: 'Chicken Marsala', price: '$19.99', desc: 'Tender chicken in rich wine reduction sauce.' },
+      { name: 'Lobster Tail', price: '$32.99', desc: 'Buttery lobster with fresh seasonal vegetables.' }
+    ]
+  },
+  sushi: {
+    name: 'Sushi',
+    items: [
+      { name: 'California Roll', price: '$8.99', desc: 'Crab, cucumber, and avocado in a crispy roll.' },
+      { name: 'Spicy Tuna Roll', price: '$9.99', desc: 'Premium tuna with spicy sauce and crunch.' },
+      { name: 'Philadelphia Roll', price: '$10.99', desc: 'Salmon and cream cheese in a soft wrap.' },
+      { name: 'Dragon Roll', price: '$12.99', desc: 'Shrimp tempura and avocado with umami glaze.' }
+    ]
+  },
+  dessert: {
+    name: 'Dessert',
+    items: [
+      { name: 'Tiramisu', price: '$7.99', desc: 'Classic layered dessert with mascarpone cream.' },
+      { name: 'Chocolate Lava Cake', price: '$8.99', desc: 'Warm chocolate cake with molten center.' },
+      { name: 'Cheesecake', price: '$6.99', desc: 'Creamy cheesecake topped with berry compote.' },
+      { name: 'Crème Brûlée', price: '$7.50', desc: 'Vanilla custard with caramelized sugar crust.' }
+    ]
+  },
+  drinks: {
+    name: 'Drinks',
+    items: [
+      { name: 'Fresh Lemonade', price: '$3.99', desc: 'Perfectly chilled with fresh lemons.' },
+      { name: 'Iced Coffee', price: '$4.50', desc: 'Cold brew served over ice and smooth.' },
+      { name: 'Smoothie Bowl', price: '$7.99', desc: 'Seasonal fruit blend with crunchy toppings.' },
+      { name: 'Fresh Juice', price: '$5.99', desc: 'Orange, apple, or carrot juice blend.' }
+    ]
+  }
 };
 
-const categories = Object.keys(menuData);
+const categoryKeys = Object.keys(menuData);
 let currentSpecial = null;
 
-// Initialize on page load
-window.addEventListener('load', () => {
-    initializeApp();
-});
-
-function initializeApp() {
-    selectRandomSpecial();
-    setupNavigation();
-    renderMenuList('all');
+function init() {
+  selectRandomSpecial();
+  renderMenuList('all');
+  attachNavState();
 }
 
-// Navigation setup
-function setupNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    window.addEventListener('scroll', () => {
-        let current = '';
-        document.querySelectorAll('section[id]').forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            const href = link.getAttribute('href');
-            if (href && href === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
+function attachNavState() {
+  const navLinks = document.querySelectorAll('.main-nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.forEach(item => item.classList.remove('active'));
+      link.classList.add('active');
     });
+  });
 }
 
-// Select random special category
 function selectRandomSpecial() {
-    const randomIndex = Math.floor(Math.random() * categories.length);
-    currentSpecial = categories[randomIndex];
-    updateSpecialInfo();
+  const index = Math.floor(Math.random() * categoryKeys.length);
+  currentSpecial = categoryKeys[index];
+  const categoryName = menuData[currentSpecial].name;
+  const specialSummary = document.getElementById('special-summary');
+  if (specialSummary) specialSummary.textContent = `Today's special: ${categoryName}`;
+  const specialName = document.getElementById('special-name');
+  if (specialName) specialName.textContent = categoryName;
 }
 
-function updateSpecialInfo() {
-    const categoryName = menuData[currentSpecial].name;
-    document.getElementById('special-desc').textContent = `Today's special: ${categoryName} section`;
-    document.getElementById('special-category-name').textContent = categoryName;
+function showHomePage() {
+  hideAllPages();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Page navigation functions
 function showMenuPage() {
-    hideAllPages();
-    document.getElementById('menu-page').classList.add('active');
-    renderMenuList('all');
-    document.getElementById('category-filter').value = 'all';
-    window.scrollTo(0, 70);
+  hideAllPages();
+  const page = document.getElementById('menu-page');
+  page.classList.remove('hidden');
+  page.classList.add('active');
+  renderMenuList('all');
+  const filter = document.getElementById('category-filter');
+  if (filter) filter.value = 'all';
+  window.scrollTo({ top: page.offsetTop - 80, behavior: 'smooth' });
 }
 
 function showSpecialPage() {
-    selectRandomSpecial();
-    hideAllPages();
-    document.getElementById('special-page').classList.add('active');
-    renderSpecialMenu();
-    window.scrollTo(0, 70);
+  hideAllPages();
+  selectRandomSpecial();
+  const page = document.getElementById('special-page');
+  page.classList.remove('hidden');
+  page.classList.add('active');
+  renderSpecialItems();
+  window.scrollTo({ top: page.offsetTop - 80, behavior: 'smooth' });
 }
 
 function showMapPage() {
-    hideAllPages();
-    document.getElementById('map-page').classList.add('active');
-    window.scrollTo(0, 70);
-}
-
-function backToHome() {
-    hideAllPages();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function scrollToMenu() {
-    document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+  hideAllPages();
+  const page = document.getElementById('map-page');
+  page.classList.remove('hidden');
+  page.classList.add('active');
+  window.scrollTo({ top: page.offsetTop - 80, behavior: 'smooth' });
 }
 
 function hideAllPages() {
-    document.querySelectorAll('.content-page').forEach(page => {
-        page.classList.remove('active');
-    });
+  document.querySelectorAll('.content-page').forEach(page => {
+    page.classList.add('hidden');
+    page.classList.remove('active');
+  });
 }
 
-// Render menu list
 function renderMenuList(category) {
-    const grid = document.getElementById('menu-grid');
-    grid.innerHTML = '';
-    
-    let items = [];
-    if (category === 'all') {
-        for (let cat in menuData) {
-            items = items.concat(menuData[cat].items.map(item => ({
-                ...item,
-                category: menuData[cat].name
-            })));
-        }
-    } else if (menuData[category]) {
-        items = menuData[category].items.map(item => ({
-            ...item,
-            category: menuData[category].name
-        }));
+  const grid = document.getElementById('menu-grid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+
+  let items = [];
+  if (category === 'all') {
+    for (const key of categoryKeys) {
+      const section = menuData[key];
+      items = items.concat(section.items.map(item => ({ ...item, category: section.name })));
     }
-    
-    items.forEach((item, index) => {
-        const card = document.createElement('div');
-        card.className = 'menu-card';
-        card.style.animationDelay = `${index * 0.1}s`;
-        card.innerHTML = `
-            <div class="menu-card-category">${item.category}</div>
-            <div class="menu-card-name">${item.name}</div>
-            <div class="menu-card-description">${item.desc}</div>
-            <div class="menu-card-price">${item.price}</div>
-        `;
-        grid.appendChild(card);
-    });
+  } else if (menuData[category]) {
+    items = menuData[category].items.map(item => ({ ...item, category: menuData[category].name }));
+  }
+
+  items.forEach(item => {
+    const card = document.createElement('article');
+    card.className = 'menu-card';
+    card.innerHTML = `
+      <div class="menu-card-category">${item.category}</div>
+      <div class="menu-card-name">${item.name}</div>
+      <div class="menu-card-description">${item.desc}</div>
+      <div class="menu-card-price">${item.price}</div>
+    `;
+    grid.appendChild(card);
+  });
 }
 
-// Filter menu
-function filterMenu(category) {
-    renderMenuList(category);
+function renderSpecialItems() {
+  const grid = document.getElementById('special-grid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+  const category = menuData[currentSpecial];
+  category.items.forEach(item => {
+    const card = document.createElement('article');
+    card.className = 'menu-card';
+    card.innerHTML = `
+      <div class="menu-card-category">${category.name}</div>
+      <div class="menu-card-name">${item.name}</div>
+      <div class="menu-card-description">${item.desc}</div>
+      <div class="menu-card-price">${item.price}</div>
+    `;
+    grid.appendChild(card);
+  });
 }
 
-// Render special menu
-function renderSpecialMenu() {
-    const grid = document.getElementById('special-grid');
-    grid.innerHTML = '';
-    
-    const items = menuData[currentSpecial].items.map(item => ({
-        ...item,
-        category: menuData[currentSpecial].name
-    }));
-    
-    items.forEach((item, index) => {
-        const card = document.createElement('div');
-        card.className = 'menu-card';
-        card.style.animationDelay = `${index * 0.1}s`;
-        card.innerHTML = `
-            <div class="menu-card-category">${item.category}</div>
-            <div class="menu-card-name">${item.name}</div>
-            <div class="menu-card-description">${item.desc}</div>
-            <div class="menu-card-price">${item.price}</div>
-        `;
-        grid.appendChild(card);
-    });
+function filterMenu(value) {
+  renderMenuList(value);
 }
+
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+window.addEventListener('load', init);
