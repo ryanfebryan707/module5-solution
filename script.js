@@ -1,238 +1,185 @@
-"use strict";
-
-// Data menu dengan berbagai kategori
-const menuCategories = {
-    'makan-siang': {
-        name: 'Makan Siang',
+// Menu data
+const menuData = {
+    lunch: {
+        name: 'Lunch',
         items: [
-            { id: 1, name: 'Nasi Goreng Ayam', price: 45000, description: 'Nasi goreng dengan ayam, telur, dan sayuran segar' },
-            { id: 2, name: 'Mie Kuah Lezat', price: 35000, description: 'Mie dalam kuah kaldu daging dengan tahu dan sayuran' },
-            { id: 3, name: 'Soto Ayam', price: 30000, description: 'Soto tradisional dengan ayam, kunyit, dan bumbu rempah' },
-            { id: 4, name: 'Gado-Gado', price: 25000, description: 'Sayuran segar dengan saus kacang dan kerupuk' }
+            { name: 'Grilled Chicken Bowl', price: '$12.99', desc: 'Marinated chicken with fresh vegetables' },
+            { name: 'Caesar Wrap', price: '$10.99', desc: 'Crispy wrap with romaine and dressing' },
+            { name: 'Pasta Primavera', price: '$11.99', desc: 'Fresh pasta with seasonal vegetables' },
+            { name: 'Turkey Club', price: '$11.50', desc: 'Classic three-layer sandwich' }
         ]
     },
-    'makan-malam': {
-        name: 'Makan Malam',
+    dinner: {
+        name: 'Dinner',
         items: [
-            { id: 5, name: 'Ribeye Premium', price: 185000, description: 'Daging sapi premium panggang dengan kentang dan saus' },
-            { id: 6, name: 'Salmon Asap', price: 165000, description: 'Salmon dipanggang dengan lemon butter sauce' },
-            { id: 7, name: 'Chicken Alfredo', price: 85000, description: 'Ayam dengan pasta dan saus alfredo lembut' },
-            { id: 8, name: 'Seafood Mix Grilled', price: 145000, description: 'Udang dan cumi panggang dengan herbs' }
+            { name: 'Ribeye Steak', price: '$28.99', desc: 'Premium cut with garlic butter' },
+            { name: 'Salmon Fillet', price: '$24.99', desc: 'Wild-caught with lemon sauce' },
+            { name: 'Chicken Marsala', price: '$19.99', desc: 'Tender chicken in wine reduction' },
+            { name: 'Lobster Tail', price: '$32.99', desc: 'Butter-poached with asparagus' }
         ]
     },
-    'sushi': {
+    sushi: {
         name: 'Sushi',
         items: [
-            { id: 9, name: 'California Roll', price: 65000, description: 'Sushi roll dengan kepiting, mentimun, dan alpukat' },
-            { id: 10, name: 'Spicy Tuna Roll', price: 55000, description: 'Tuna pedas dengan mayo dan serrano' },
-            { id: 11, name: 'Philadelphia Roll', price: 75000, description: 'Salmon segar dan cream cheese dalam satu gigitan' },
-            { id: 12, name: 'Dragon Roll', price: 85000, description: 'Udang tempura dengan alpukat dan saus teriyaki' }
+            { name: 'California Roll', price: '$8.99', desc: 'Crab, avocado, cucumber' },
+            { name: 'Spicy Tuna Roll', price: '$9.99', desc: 'Tuna with sriracha mayo' },
+            { name: 'Philadelphia Roll', price: '$10.99', desc: 'Salmon and cream cheese' },
+            { name: 'Dragon Roll', price: '$12.99', desc: 'Shrimp tempura with avocado' }
         ]
     },
-    'dessert': {
+    dessert: {
         name: 'Dessert',
         items: [
-            { id: 13, name: 'Tiramisu Italia', price: 55000, description: 'Tiramisu tradisional dengan mascarpone dan kopi' },
-            { id: 14, name: 'Chocolate Lava Cake', price: 48000, description: 'Kue cokelat hangat dengan lava center' },
-            { id: 15, name: 'Basque Cheesecake', price: 65000, description: 'Cheesecake dengan crust yang unik dan creamy' },
-            { id: 16, name: 'Matcha Ice Cream', price: 35000, description: 'Es krim matcha dengan taburan cokelat' }
+            { name: 'Tiramisu', price: '$7.99', desc: 'Classic Italian layered cake' },
+            { name: 'Chocolate Lava Cake', price: '$8.99', desc: 'Warm cake with molten center' },
+            { name: 'Cheesecake', price: '$6.99', desc: 'New York style with berry topping' },
+            { name: 'Crème Brûlée', price: '$7.50', desc: 'Vanilla custard with caramel crust' }
         ]
     },
-    'minuman': {
-        name: 'Minuman',
+    drinks: {
+        name: 'Drinks',
         items: [
-            { id: 17, name: 'Lychee Iced Tea', price: 28000, description: 'Teh melati dingin dengan leci dan es' },
-            { id: 18, name: 'Citrus Sparkler', price: 32000, description: 'Lemon, jeruk, soda, dan daun mint' },
-            { id: 19, name: 'House Cold Brew', price: 30000, description: 'Kopi seduh dingin yang bersih dan berkarakter' },
-            { id: 20, name: 'Mango Smoothie', price: 38000, description: 'Smoothie mangga segar dengan yogurt' }
+            { name: 'Fresh Lemonade', price: '$3.99', desc: 'Made daily with fresh lemons' },
+            { name: 'Iced Coffee', price: '$4.50', desc: 'Premium cold brew coffee' },
+            { name: 'Smoothie Bowl', price: '$7.99', desc: 'Seasonal fruit smoothie' },
+            { name: 'Fresh Juice', price: '$5.99', desc: 'Orange, apple, or carrot blend' }
         ]
     }
 };
 
-const categoryKeys = Object.keys(menuCategories);
-let currentSpecialCategory = null;
+const categories = Object.keys(menuData);
+let currentSpecial = null;
 
-// Format harga
-const currency = new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    maximumFractionDigits: 0
+// Initialize
+window.addEventListener('load', () => {
+    setRandomSpecial();
+    setupNavigation();
 });
 
-// Set tahun di footer
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Mobile navigation
-const navToggle = document.querySelector('.nav-toggle');
-const navigation = document.getElementById('main-nav');
-
-function closeNavigation() {
-    navigation.classList.remove('is-open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.setAttribute('aria-label', 'Buka navigasi');
+// Setup navigation
+function setupNavigation() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        document.querySelectorAll('section[id]').forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('nav-active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('nav-active');
+            }
+        });
+    });
 }
 
-navToggle.addEventListener('click', () => {
-    const open = navToggle.getAttribute('aria-expanded') !== 'true';
-    navigation.classList.toggle('is-open', open);
-    navToggle.setAttribute('aria-expanded', String(open));
-    navToggle.setAttribute('aria-label', open ? 'Tutup navigasi' : 'Buka navigasi');
-});
-
-navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeNavigation()));
-
-window.matchMedia('(min-width: 769px)').addEventListener('change', event => {
-    if (event.matches) closeNavigation();
-});
-
-// Update active nav
-const sections = document.querySelectorAll('#beranda, #menu-page, #tentang');
-const navLinks = navigation.querySelectorAll('a');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 100) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Fungsi untuk menampilkan halaman
-function showPage(pageId) {
-    // Sembunyikan semua page
-    document.querySelectorAll('.page-section').forEach(page => {
-        page.style.display = 'none';
-    });
-    
-    // Tampilkan page yang dipilih
-    const page = document.getElementById(pageId);
-    if (page) {
-        page.style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+// Set random special category
+function setRandomSpecial() {
+    const randomIndex = Math.floor(Math.random() * categories.length);
+    currentSpecial = categories[randomIndex];
+    updateSpecialInfo();
 }
 
-// Event listener untuk tiles
-document.getElementById('menu-tile').addEventListener('click', () => {
-    showPage('menu-list');
+function updateSpecialInfo() {
+    const categoryName = menuData[currentSpecial].name;
+    document.getElementById('special-info').textContent = `Today's special: ${categoryName}`;
+    document.getElementById('special-category-name').textContent = categoryName;
+}
+
+// Navigate functions
+function navigateToMenu() {
+    hideAllPages();
+    document.getElementById('menu-page').classList.add('active');
     renderMenuList('all');
-});
+    window.scrollTo(0, 0);
+}
 
-document.getElementById('special-tile').addEventListener('click', () => {
-    selectRandomCategory();
-});
+function navigateToSpecial() {
+    setRandomSpecial();
+    hideAllPages();
+    document.getElementById('special-page').classList.add('active');
+    renderSpecialMenu();
+    window.scrollTo(0, 0);
+}
 
-document.getElementById('map-tile').addEventListener('click', () => {
-    showPage('map');
-});
+function navigateToMap() {
+    hideAllPages();
+    document.getElementById('map-page').classList.add('active');
+    window.scrollTo(0, 0);
+}
 
-// Fungsi untuk memilih kategori acak
-function selectRandomCategory() {
-    const randomIndex = Math.floor(Math.random() * categoryKeys.length);
-    currentSpecialCategory = categoryKeys[randomIndex];
-    
-    showPage('special-category');
-    renderSpecialCategory();
-    
-    // Update special tile
-    const categoryName = menuCategories[currentSpecialCategory].name;
-    document.getElementById('special-category-name').textContent = `Kategori: ${categoryName}`;
+function backToHome() {
+    hideAllPages();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function hideAllPages() {
+    document.querySelectorAll('.page-hidden').forEach(page => {
+        page.classList.remove('active');
+    });
 }
 
 // Render menu list
-function renderMenuList(category = 'all') {
-    const menuGrid = document.getElementById('menu-grid');
-    menuGrid.innerHTML = '';
+function renderMenuList(category) {
+    const grid = document.getElementById('menu-items-grid');
+    grid.innerHTML = '';
     
-    let allItems = [];
+    let items = [];
     if (category === 'all') {
-        Object.values(menuCategories).forEach(cat => {
-            allItems = allItems.concat(cat.items);
-        });
-    } else {
-        allItems = menuCategories[category].items;
+        for (let cat in menuData) {
+            items = items.concat(menuData[cat].items.map(item => ({
+                ...item,
+                category: menuData[cat].name
+            })));
+        }
+    } else if (menuData[category]) {
+        items = menuData[category].items.map(item => ({
+            ...item,
+            category: menuData[category].name
+        }));
     }
     
-    allItems.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'menu-item';
-        itemDiv.innerHTML = `
-            <div class="menu-item-category">${getItemCategory(item.id)}</div>
-            <div class="menu-item-name">${item.name}</div>
-            <div class="menu-item-description">${item.description}</div>
-            <div class="menu-item-price">${currency.format(item.price)}</div>
+    items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.innerHTML = `
+            <div class="menu-card-category">${item.category}</div>
+            <div class="menu-card-name">${item.name}</div>
+            <div class="menu-card-description">${item.desc}</div>
+            <div class="menu-card-price">${item.price}</div>
         `;
-        menuGrid.appendChild(itemDiv);
+        grid.appendChild(card);
     });
 }
 
-// Render special category
-function renderSpecialCategory() {
-    const specialGrid = document.getElementById('special-grid');
-    const specialTitle = document.getElementById('special-title');
+// Filter menu
+function filterMenu(category) {
+    renderMenuList(category);
+}
+
+// Render special menu
+function renderSpecialMenu() {
+    const grid = document.getElementById('special-items-grid');
+    grid.innerHTML = '';
     
-    const categoryData = menuCategories[currentSpecialCategory];
-    specialTitle.textContent = categoryData.name;
+    const items = menuData[currentSpecial].items.map(item => ({
+        ...item,
+        category: menuData[currentSpecial].name
+    }));
     
-    specialGrid.innerHTML = '';
-    categoryData.items.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'menu-item';
-        itemDiv.innerHTML = `
-            <div class="menu-item-category">${categoryData.name.toUpperCase()}</div>
-            <div class="menu-item-name">${item.name}</div>
-            <div class="menu-item-description">${item.description}</div>
-            <div class="menu-item-price">${currency.format(item.price)}</div>
+    items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.innerHTML = `
+            <div class="menu-card-category">${item.category}</div>
+            <div class="menu-card-name">${item.name}</div>
+            <div class="menu-card-description">${item.desc}</div>
+            <div class="menu-card-price">${item.price}</div>
         `;
-        specialGrid.appendChild(itemDiv);
+        grid.appendChild(card);
     });
 }
-
-// Fungsi untuk mendapatkan kategori item
-function getItemCategory(itemId) {
-    for (const [key, category] of Object.entries(menuCategories)) {
-        const item = category.items.find(i => i.id === itemId);
-        if (item) return category.name.toUpperCase();
-    }
-    return 'MENU';
-}
-
-// Filter kategori menu
-document.getElementById('category-filter').addEventListener('change', (e) => {
-    renderMenuList(e.target.value);
-});
-
-// Tombol kategori acak baru
-document.getElementById('new-special').addEventListener('click', () => {
-    selectRandomCategory();
-});
-
-// Tombol refresh special di tile
-document.getElementById('refresh-special').addEventListener('click', () => {
-    selectRandomCategory();
-});
-
-// Back buttons
-document.querySelectorAll('.back-button').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelectorAll('.page-section').forEach(page => {
-            page.style.display = 'none';
-        });
-        window.location.hash = '#menu-page';
-    });
-});
-
-// Initialize special category saat pertama kali
-window.addEventListener('load', () => {
-    selectRandomCategory();
-});
